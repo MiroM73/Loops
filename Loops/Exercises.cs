@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Loops
 {
@@ -22,9 +23,33 @@ namespace Loops
             //2.Write a program that prints on the console the numbers from 1 to N,
             //which are not divisible by 3 and 7 simultaneously.The number N
             //should be read from the standard input.
+            Console.Write("Enter a number N. Output will be numbers divisible by 3 and 7: ");
+            int numberNN = int.Parse(Console.ReadLine());
+            for (int i = 1; i <= numberNN; i++)
+            {
+                if (i % 3 == 0 && i % 7 == 0)
+                {
+                    Console.Write(i + " ");
+                }
+            }
+            Console.WriteLine();
+
+            EndOfScript();
 
             //3.Write a program that reads from the console a series of integers and
             //prints the smallest and largest of them.
+            Console.Write("Enter a serie of the numbers. Output will be smalles and biggest number: ");            
+            List<int> zadaneCislaTransformedList = new List<int>();
+            foreach (var item in Console.ReadLine().Split(new char[] { ' ' }))
+            {
+                zadaneCislaTransformedList.Add(int.Parse(item));
+            }
+            int[] zadaneCislaInt = zadaneCislaTransformedList.ToArray();
+            Array.Sort(zadaneCislaInt);
+            Console.WriteLine($"The smallest one is {zadaneCislaInt[0]} " +
+                $"and the biggest one is {zadaneCislaInt[zadaneCislaInt.Length - 1]}");
+
+            EndOfScript();
 
             //4.Write a program that prints all possible cards from a standard deck
             //of cards, without jokers(there are 52 cards: 4 suits of 13 cards). 
