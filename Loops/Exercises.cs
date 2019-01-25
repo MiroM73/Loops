@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace Loops
 {
@@ -52,13 +53,77 @@ namespace Loops
             EndOfScript();
 
             //4.Write a program that prints all possible cards from a standard deck
-            //of cards, without jokers(there are 52 cards: 4 suits of 13 cards). 
+            //of cards, without jokers(there are 52 cards: 4 suits of 13 cards).             
+            string[] colors = {"Heart" , "Club" , "Diamond" , "Spade"};
+            foreach (var color in colors)
+            {
+                for (int i = 2; i <= 14; i++)
+                {                    
+                    switch (i)
+                    {
+                        case 11:
+                            Console.Write("{0}_{1} ", color, "Jack");
+                            break;
+                        case 12:
+                            Console.Write("{0}_{1} ", color, "Queen");
+                            break;
+                        case 13:
+                            Console.Write("{0}_{1} ", color, "King");
+                            break;
+                        case 14:
+                            Console.Write("{0}_{1} ", color, "Ace");
+                            break;
+                        default:
+                            Console.Write("{0}_{1} ", color, i);
+                            break;
+                    }
+                }
+                Console.WriteLine();
+            }            
+            
+            EndOfScript();
 
             //5.Write a program that reads from the console number N and print the sum
             //of the first N members of the Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 
             //13, 21, 34, 55, 89, 144, 233, 377, … 
+            Console.WriteLine("Enter integer N and I will print the sum of the first N members of the Fibonacci sequence.");
+            Console.Write("N: ");
+            int numberF = int.Parse(Console.ReadLine());
+            int number1 = 0;
+            int number2 = 1;            
+            int nextNumber = 1;            
+            int sumOfFibonacci = 1;            
+            Console.Write($"{number1} {number2} ");
+            for (int i = 3; i <= numberF; i++)            
+            {
+                sumOfFibonacci += nextNumber;
+                Console.Write($"{nextNumber} ");
+                number1 = number2;
+                number2 = nextNumber;
+                nextNumber = number1 + number2;
+            }
+            Console.WriteLine();
+            Console.WriteLine("Sum = " + sumOfFibonacci);
+
+            EndOfScript();
 
             //6.Write a program that calculates N!/ K! for given N and K(1 < K < N).
+            Console.WriteLine("Enter two integers N and K where (1 < K < N) and I will calculate N! / K!.");
+            Console.Write("Enter N: ");
+            //added a reference to System.Numerics assembly in the project
+            //then added using System.Numerics to use BigInteger class
+            BigInteger n = BigInteger.Parse(Console.ReadLine());
+            Console.Write("Enter K: ");
+            BigInteger k = BigInteger.Parse(Console.ReadLine());
+            BigInteger result = 1;
+            for (BigInteger i = (k + 1); i <= n; i++)
+            {
+                result *= i;
+            }
+            Console.WriteLine("The result for {0}! / {1}! is {2:E8}",n,k,result);
+
+            EndOfScript();
+
 
             //7.Write a program that calculates N!*K!/ (N - K)! for given N and K
             //(1 < K < N).
@@ -118,11 +183,7 @@ namespace Loops
             // 11 16 15 6
             // 10  9  8 7
 
-
-
-
-
-
+                                          
         }
         static void EndOfScript()
         {
