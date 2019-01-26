@@ -28,7 +28,7 @@ Exercises from book "Fundamentals of Computer Programming with C#" Exercise 6: L
    
       (2n)! / ((n + 1)! * n!)
    
-   for n ≥ 0.Write a program that calculates the nth Catalan number by given n.
+   for n ≥ 0. Write a program that calculates the n-th Catalan number by given n.
 
 9. Write a program that for a given integers n and x, calculates the sum: 
 
