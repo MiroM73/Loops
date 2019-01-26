@@ -24,11 +24,15 @@ Exercises from book "Fundamentals of Computer Programming with C#" Exercise 6: L
    (1 < K < N).
 
 8. In combinatorics, the Catalan numbers are calculated by the following
-   formula: 
+   formula:
    
-   , for n ≥ 0.Write a program that calculates the nth Catalan number by given n.
+      (2n)! / ((n + 1)! * n!)
+   
+   for n ≥ 0.Write a program that calculates the nth Catalan number by given n.
 
 9. Write a program that for a given integers n and x, calculates the sum: 
+
+      S = 1 + (1! / x) + (2! / x^2) + ... + (n! / x^n)
    
 
 10. Write a program that reads from the console a positive integer number
