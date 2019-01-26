@@ -10,21 +10,20 @@ namespace Loops
         {
             //1.Write a program that prints on the console the numbers from 1 to N. 
             //The number N should be read from the standard input.
-            Console.Write("Enter a positive integer N and I will print numbers 1 to N on console: ");
+            Console.Write("EX1: Enter a positive integer N and I will print numbers 1 to N on console: ");
             int numberN = int.Parse(Console.ReadLine());
             for (int i = 1; i <= numberN; i++)
             {
                 Console.Write(i + " ");
             }
             Console.WriteLine();
-
             EndOfScript();
 
 
             //2.Write a program that prints on the console the numbers from 1 to N,
             //which are not divisible by 3 and 7 simultaneously.The number N
             //should be read from the standard input.
-            Console.Write("Enter a number N. Output will be numbers divisible by 3 and 7: ");
+            Console.Write("EX2: Enter a number N. Output will be numbers divisible by 3 and 7: ");
             int numberNN = int.Parse(Console.ReadLine());
             for (int i = 1; i <= numberNN; i++)
             {
@@ -34,12 +33,11 @@ namespace Loops
                 }
             }
             Console.WriteLine();
-
             EndOfScript();
 
             //3.Write a program that reads from the console a series of integers and
             //prints the smallest and largest of them.
-            Console.Write("Enter a serie of the numbers. Output will be smalles and biggest number: ");            
+            Console.Write("EX3: Enter a serie of the numbers. Output will be smalles and biggest number: ");            
             List<int> zadaneCislaTransformedList = new List<int>();
             foreach (var item in Console.ReadLine().Split(new char[] { ' ' }))
             {
@@ -54,6 +52,7 @@ namespace Loops
 
             //4.Write a program that prints all possible cards from a standard deck
             //of cards, without jokers(there are 52 cards: 4 suits of 13 cards).             
+            Console.WriteLine("EX4: Printing all possible cards from a standard deck of cards");
             string[] colors = {"Heart" , "Club" , "Diamond" , "Spade"};
             foreach (var color in colors)
             {
@@ -79,67 +78,93 @@ namespace Loops
                     }
                 }
                 Console.WriteLine();
-            }            
-            
+            }
             EndOfScript();
 
             //5.Write a program that reads from the console number N and print the sum
             //of the first N members of the Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 
             //13, 21, 34, 55, 89, 144, 233, 377, … 
-            Console.WriteLine("Enter integer N and I will print the sum of the first N members of the Fibonacci sequence.");
+            Console.WriteLine("EX5: Enter integer N > 1 and I will print the sum of the first N members of the Fibonacci sequence.");
             Console.Write("N: ");
             int numberF = int.Parse(Console.ReadLine());
             int number1 = 0;
             int number2 = 1;            
             int nextNumber = 1;            
-            int sumOfFibonacci = 1;            
-            Console.Write($"{number1} {number2} ");
-            for (int i = 3; i <= numberF; i++)            
+            int sumOfFibonacci = 1;
+            if (numberF <= 1)
             {
-                sumOfFibonacci += nextNumber;
-                Console.Write($"{nextNumber} ");
-                number1 = number2;
-                number2 = nextNumber;
-                nextNumber = number1 + number2;
+                Console.WriteLine($"Entered number {numberF} <= 1!");
             }
-            Console.WriteLine();
-            Console.WriteLine("Sum = " + sumOfFibonacci);
-
+            else
+            {
+                Console.Write($"{number1} {number2} ");
+                for (int i = 3; i <= numberF; i++)
+                {
+                    sumOfFibonacci += nextNumber;
+                    Console.Write($"{nextNumber} ");
+                    number1 = number2;
+                    number2 = nextNumber;
+                    nextNumber = number1 + number2;
+                }
+                Console.WriteLine();
+                Console.WriteLine("Sum = " + sumOfFibonacci);
+            }
             EndOfScript();
 
             //6.Write a program that calculates N!/ K! for given N and K(1 < K < N).
-            Console.WriteLine("Enter two integers N and K where (1 < K < N) and I will calculate N! / K!.");
+            Console.WriteLine("EX6: Enter two integers N and K where (1 < K < N) and I will calculate N! / K!.");
             Console.Write("Enter N: ");
             //added a reference to System.Numerics assembly in the project
             //then added using System.Numerics to use BigInteger class
-            BigInteger n = BigInteger.Parse(Console.ReadLine());
+            int n = int.Parse(Console.ReadLine());
             Console.Write("Enter K: ");
-            BigInteger k = BigInteger.Parse(Console.ReadLine());
+            int k = int.Parse(Console.ReadLine());
             BigInteger result = 1;
-            for (BigInteger i = (k + 1); i <= n; i++)
+            for (int i = (k + 1); i <= n; i++)
             {
                 result *= i;
             }
             Console.WriteLine("The result for {0}! / {1}! is {2:E8}",n,k,result);
-
             EndOfScript();
-
 
             //7.Write a program that calculates N!*K!/ (N - K)! for given N and K
             //(1 < K < N).
+            Console.WriteLine("EX7: Enter two integers N and K where (1 < K < N) and I will calculate N! * K! / (N - K)!.");
+            Console.Write("Enter N: ");            
+            int n1 = int.Parse(Console.ReadLine());
+            Console.Write("Enter K: ");
+            int k1 = int.Parse(Console.ReadLine());
+            BigInteger result1 = 1;
+            int nMinusK = n1 - k1;
+            //calculate N! / (N - K)!
+            for (int i = (nMinusK + 1); i <= n1; i++)
+            {
+                result1 *= i;
+            }
+            //multiply N! / (N - K)! by K!
+            for (int i = 1; i <= k1; i++)
+            {
+                result1 *= i;
+            }
+            Console.WriteLine("The result for {0}! * {1}! / ({0} - {1})! is {2:E3}", n1, k1, result1);
+            EndOfScript();
 
             //8.In combinatorics, the Catalan numbers are calculated by the following
             //formula: 
-            //
-            //
-            //, for n ≥ 0.Write a program that calculates the nth Catalan number by given n.
+            //(2n)! / ((n + 1)! * n!),
+            //for n ≥ 0. Write a program that calculates the n-th Catalan number by given n.
+            Console.WriteLine("EX8: Enter number N => 0 and I will calculate n-th Catalan number (2 * n)! / ((n + 1)! * n!).");
+            Console.Write("N: ");
+            int nCatalan = int.Parse(Console.ReadLine());
+            BigInteger nCatalanResult = Factorial(2 * nCatalan) / (Factorial(nCatalan + 1) * Factorial(nCatalan));
+            Console.WriteLine("Result for n-th Catalan number (2 * {0}!) / (({0} + 1)! * {0}!) = {1:E6}", nCatalan, nCatalanResult);
 
+            EndOfScript();
             //9.Write a program that for a given integers n and x, calculates the sum: 
-            //
-            //
+            //S = 1 + (1! / x) + (2! / x^2) + ... + (n! / x^n)             
 
             //10.Write a program that reads from the console a positive integer number
-            //N(N < 20) and prints a matrix of numbers as on the figures below: 
+            //N € (1 .. 19) and prints a matrix of numbers as on the figures below: 
             //N = 3 
             // 1 2 3
             // 2 3 4
@@ -150,11 +175,38 @@ namespace Loops
             // 2 3 4 5
             // 3 4 5 6
             // 4 5 6 7
+            Console.Write("EX10: Enter number N from (1 .. 19). I will return a matrix: ");
+            int intMatrix = int.Parse(Console.ReadLine());
+            if (intMatrix > 0 && intMatrix < 20)
+            {
+                for (int i = 1; i <= intMatrix; i++)
+                {
+                    for (int j = i; j < (intMatrix + i); j++)
+                    {
+                        if (j > 9)
+                        {
+                            Console.Write($"{j} ");
+                        }
+                        else
+                        {
+                            Console.Write($"{j}  ");
+                        }
+
+                    }
+                    Console.WriteLine();
+                }
+            }
+            else
+            {
+                Console.WriteLine($"The number you entered is out of def N from (1 .. 19)." +
+                    $" Entered integet {intMatrix} " + (intMatrix > 19 ? "is greater then 19." : "is lower then 1."));
+            }            
+            EndOfScript();
 
             //11.Write a program that calculates with how many zeroes the factorial of
             //a given number ends.Examples: 
-            //N = 10->N! = 3628800-> 2
-            //N = 20->N! = 2432902008176640000-> 4
+            //N = 10 -> N! = 3628800-> 2
+            //N = 20 -> N! = 2432902008176640000-> 4
 
             //12.Write a program that converts a given number from decimal to binary
             //notation(numeral system).
@@ -183,12 +235,23 @@ namespace Loops
             // 11 16 15 6
             // 10  9  8 7
 
-                                          
+
         }
         static void EndOfScript()
         {
             Console.WriteLine(new String('#', 60));
             Console.WriteLine();
         }
+        private static BigInteger Factorial(int number)
+        {
+            BigInteger result = 1;
+            while (number > 0 && number != 1)
+            {
+                result *= number;
+                number--;
+            }
+            return result;
+        }
+
     }
 }
