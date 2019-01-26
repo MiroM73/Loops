@@ -207,6 +207,29 @@ namespace Loops
             //a given number ends.Examples: 
             //N = 10 -> N! = 3628800-> 2
             //N = 20 -> N! = 2432902008176640000-> 4
+            Console.Write("Enter integer N. I will return a number of the zeros N! ends: ");
+            int nNumber = int.Parse(Console.ReadLine());
+            BigInteger nFactorial = Factorial(nNumber);
+            BigInteger nFactorialTmp = nFactorial;
+            int numberOfZeros = 0;
+            while (nFactorialTmp % 10 == 0)
+            {
+                nFactorialTmp = nFactorialTmp / 10;
+                numberOfZeros += 1;
+            }
+            switch (numberOfZeros)
+            {
+                case 0:
+                    Console.WriteLine("The factorial of {0} ({1}) has not zeros.", nNumber, nFactorial);
+                    break;
+                case 1:
+                    Console.WriteLine("The factorial of {0} ({1}) has 1 zero.", nNumber, nFactorial);
+                    break;
+                default:
+                    Console.WriteLine("The factorial of {0} ({1}) has {2} zeros.", nNumber, nFactorial, numberOfZeros);
+                    break;
+            }
+            EndOfScript();
 
             //12.Write a program that converts a given number from decimal to binary
             //notation(numeral system).
