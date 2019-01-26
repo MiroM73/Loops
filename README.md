@@ -24,31 +24,23 @@ Exercises from book "Fundamentals of Computer Programming with C#" Exercise 6: L
    (1 < K < N).
 
 8. In combinatorics, the Catalan numbers are calculated by the following
-   formula:
-   
-      (2n)! / ((n + 1)! * n!)
-   
+   formula: 
+   <p align="left"> 
+   <img src="https://github.com/MiroM73/Images/blob/master/c_Sharp_Chap6_Ex8.png"  width="200">
+   </p>         
    for n ≥ 0. Write a program that calculates the n-th Catalan number by given n.
 
 9. Write a program that for a given integers n and x, calculates the sum: 
-
-      S = 1 + (1! / x) + (2! / x^2) + ... + (n! / x^n)
-   
+   <p align="left"> 
+   <img src="https://github.com/MiroM73/Images/blob/master/c_Sharp_Chap6_Ex9.png"  width="200">
+   </p>
 
 10. Write a program that reads from the console a positive integer number
     N(N < 20) and prints a matrix of numbers as on the figures below: 
+    <p align="left"> 
+    <img src="https://github.com/MiroM73/Images/blob/master/c_Sharp_Chap6_Ex10.png"  width="250">
+    </p>
     
-            N = 3 
-            1 2 3
-            2 3 4
-            3 4 5
-            
-            N = 4
-            1 2 3 4
-            2 3 4 5
-            3 4 5 6
-            4 5 6 7
-
 11. Write a program that calculates with how many zeroes the factorial of 
     a given number ends.
     
@@ -77,13 +69,10 @@ Exercises from book "Fundamentals of Computer Programming with C#" Exercise 6: L
     the formula LCM(a, b) = | a * b | / GCD(a, b).
 
 18. \* Write a program that for a given number n, outputs a matrix in the
-    form of a spiral: 
+    form of a spiral:     
     
-    Example for n = 4: 
-    
-        1  2  3 4
-        12 13 14 5
-        11 16 15 6
-        10  9  8 7
+    <p align="left"> 
+    <img src="https://github.com/MiroM73/Images/blob/master/c_Sharp_Chap6_Ex18.png"  width="300">
+    </p>
 
 
