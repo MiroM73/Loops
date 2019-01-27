@@ -247,24 +247,33 @@ namespace Loops
 
             char[] arrayDecimal = numberDecimal.ToCharArray();
 
+            for (int i = arrayDecimal.Length - 1; i >= 0; i--)
+            {
+                numberBinary += arrayDecimal[i];                
+            }
+            Console.WriteLine(numberBinary);
+
+            //print binary result in format xxxx xxxx xxxx xxxx 
+            int leadingZeros = 0;
             if (arrayDecimal.Length % 4 != 0)
             {
                 for (int i = 0; i < ((((arrayDecimal.Length / 4) + 1) * 4) - arrayDecimal.Length); i++)
                 {
-                    numberBinary += "0";                    
+                    Console.Write("0");
+                    leadingZeros++;
                 }
             }
-            
-            for (int i = arrayDecimal.Length - 1; i >= 0; i--)
+
+            for (int i = arrayDecimal.Length - 1, j = 1; i >= 0; i--, j++)
             {
-                numberBinary += arrayDecimal[i];                
-                if (i % 4 == 0)
+                Console.Write(arrayDecimal[i]);
+                if ((j + leadingZeros) % 4 == 0)
                 {
-                    numberBinary += " ";                    
+                    Console.Write(" ");
                 }
-            }         
-            Console.WriteLine(numberBinary);
-            
+            }            
+            Console.WriteLine();            
+
             EndOfScript();
 
             //13.Write a program that converts a given number from binary to decimal
