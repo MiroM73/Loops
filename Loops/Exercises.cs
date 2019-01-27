@@ -239,19 +239,13 @@ namespace Loops
             uint numberTmp = numberConsole;
             string numberDecimal = "";
             string numberBinary = "";
-            while (numberTmp >= 1)
+            while (numberTmp > 0)
             {
-                if (numberTmp % 2 == 0)
-                {
-                    numberDecimal += "0 ";
-                } else
-                {
-                    numberDecimal += "1 ";
-                }
+                numberDecimal += numberTmp % 2;
                 numberTmp = numberTmp / 2;
             }
 
-            string[] arrayDecimal = numberDecimal.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            char[] arrayDecimal = numberDecimal.ToCharArray();
 
             if (arrayDecimal.Length % 4 != 0)
             {
@@ -293,7 +287,48 @@ namespace Loops
 
             //14.Write a program that converts a given number from decimal to
             //hexadecimal notation.
-            
+            Console.WriteLine("EX14: Convert positive integer N to hexa");
+            Console.Write("Enter positive integer: ");
+            uint consoleUint = uint.Parse(Console.ReadLine());            
+            string resultHexaNumberString = "";
+            string resultHexa = "";
+            while (consoleUint > 0)
+            {                
+                switch (consoleUint % 16)
+                {
+                    case 10:
+                        resultHexaNumberString += "A";
+                        break;
+                    case 11:
+                        resultHexaNumberString += "B";
+                        break;
+                    case 12:
+                        resultHexaNumberString += "C";
+                        break;
+                    case 13:
+                        resultHexaNumberString += "D";
+                        break;
+                    case 14:
+                        resultHexaNumberString += "E";
+                        break;
+                    case 15:
+                        resultHexaNumberString += "F";
+                        break;
+                    default:
+                        resultHexaNumberString += consoleUint % 16;
+                        break;
+                }
+                consoleUint = consoleUint / 16;
+            }
+            char[] resultCharArray = resultHexaNumberString.ToCharArray();
+            for (int i = resultCharArray.Length - 1; i >= 0; i--)
+            {
+                resultHexa += resultCharArray[i];
+            }
+            Console.WriteLine(resultHexa);
+
+            EndOfScript();
+
             //15.Write a program that converts a given number from hexadecimal to
             //decimal notation.
 
