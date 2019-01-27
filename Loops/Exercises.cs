@@ -6,7 +6,7 @@ namespace Loops
 {
     class Exercises
     {
-        static void Main(string[] args)
+        public static void Main()
         {
             //1.Write a program that prints on the console the numbers from 1 to N. 
             //The number N should be read from the standard input.
@@ -207,7 +207,7 @@ namespace Loops
             //a given number ends.Examples: 
             //N = 10 -> N! = 3628800-> 2
             //N = 20 -> N! = 2432902008176640000-> 4
-            Console.Write("Enter integer N. I will return a number of the zeros N! ends: ");
+            Console.Write("EX11: Enter integer N. I will return a number of the zeros N! ends: ");
             int nNumber = int.Parse(Console.ReadLine());
             BigInteger nFactorial = Factorial(nNumber);
             BigInteger nFactorialTmp = nFactorial;
@@ -233,13 +233,67 @@ namespace Loops
 
             //12.Write a program that converts a given number from decimal to binary
             //notation(numeral system).
+            Console.WriteLine("EX12: Convert positive integer N to binary");
+            Console.Write("Enter positive integer: ");            
+            uint numberConsole = uint.Parse(Console.ReadLine());            
+            uint numberTmp = numberConsole;
+            string numberDecimal = "";
+            string numberBinary = "";
+            while (numberTmp >= 1)
+            {
+                if (numberTmp % 2 == 0)
+                {
+                    numberDecimal += "0 ";
+                } else
+                {
+                    numberDecimal += "1 ";
+                }
+                numberTmp = numberTmp / 2;
+            }
+
+            string[] arrayDecimal = numberDecimal.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+
+            if (arrayDecimal.Length % 4 != 0)
+            {
+                for (int i = 0; i < ((((arrayDecimal.Length / 4) + 1) * 4) - arrayDecimal.Length); i++)
+                {
+                    numberBinary += "0";                    
+                }
+            }
+            
+            for (int i = arrayDecimal.Length - 1; i >= 0; i--)
+            {
+                numberBinary += arrayDecimal[i];                
+                if (i % 4 == 0)
+                {
+                    numberBinary += " ";                    
+                }
+            }         
+            Console.WriteLine(numberBinary);
+            
+            EndOfScript();
 
             //13.Write a program that converts a given number from binary to decimal
             //notation.
+            Console.WriteLine("EX13: Convert binary number to decimal");
+            Console.Write("Enter binary number: ");
+            string numberBinary1 = Console.ReadLine();            
+            uint numberDecimal1 = 0;
+            int intExponent = numberBinary1.Length - 1;
+            for (int i = 0; i < numberBinary1.Length; i++)
+            {
+                if (numberBinary1.Substring(i, 1) == "1")
+                {
+                    numberDecimal1 = numberDecimal1 + (uint)Math.Pow(2, intExponent);
+                }
+                intExponent--;
+            }
+            Console.WriteLine(numberDecimal1);
+            EndOfScript();
 
             //14.Write a program that converts a given number from decimal to
             //hexadecimal notation.
-
+            
             //15.Write a program that converts a given number from hexadecimal to
             //decimal notation.
 
@@ -260,12 +314,12 @@ namespace Loops
 
 
         }
-        static void EndOfScript()
+        public static void EndOfScript()
         {
             Console.WriteLine(new String('#', 60));
             Console.WriteLine();
         }
-        private static BigInteger Factorial(int number)
+        public static BigInteger Factorial(int number)
         {
             BigInteger result = 1;
             while (number > 0 && number != 1)
