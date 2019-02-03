@@ -387,10 +387,50 @@ namespace Loops
 
             //16.Write a program that by a given integer N prints the numbers from 1 to N 
             //in random order.
-            
+            Console.Write("EX16: Enter an integer / string and I will randomize it: ");
+            string rndInput = Console.ReadLine();            
+            string rndResult = "";
+            int intRnd = 0;
+            Random rnd = new Random();
+            int rndInputLength = rndInput.Length;
+            for (int i = 0; i < rndInputLength; i++)
+            {                
+                intRnd = rnd.Next(0, rndInput.Length - 1);
+                rndResult += rndInput.Substring(intRnd, 1);
+                rndInput = rndInput.Remove(intRnd, 1);
+            }
+            Console.WriteLine("Radomized input {0} is {1}.", rndInput, rndResult);
+            EndOfScript();
+
             //17.Write a program that given two numbers finds their greatest common
             //divisor(GCD) and their least common multiple(LCM).You may use
             //the formula LCM(a, b) = | a * b | / GCD(a, b).
+            Console.WriteLine("EX17: Get (GCD) greater common divisor and (LCM) least common multiplier of two numbers X and Y.");
+            Console.Write("Enter integer X: ");
+            int intX = int.Parse(Console.ReadLine());
+            Console.Write("Enter integer Y: ");
+            int intY = int.Parse(Console.ReadLine());            
+            int lowerInt = intX > intY ? intY : intX;
+            int biggerInt = intX > intY ? intX : intY;
+            int gcd = 1;
+            if (biggerInt % lowerInt == 0)
+            {
+                gcd = lowerInt;                
+            }
+            else
+            {
+                for (int i = 1; i <= lowerInt / 2; i++)
+                {
+                    if (intX % i == 0 && intY % i == 0)
+                    {
+                        gcd = i;
+                    }
+                }                
+            }            
+            int lcm = (intX * intY) / gcd;
+            Console.WriteLine("GCD of numbers GCD({0},{1}) = {2}.", intX, intY, gcd);
+            Console.WriteLine("LCM of numbers LCM({0},{1}) = {2}.", intX, intY, lcm);
+            EndOfScript();            
 
             //18. * Write a program that for a given number n, outputs a matrix in the
             //form of a spiral: 
